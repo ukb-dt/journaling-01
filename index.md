@@ -15,6 +15,11 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
+- State
+- Trajectory
+- Velocity
+- Acceleration
+- Basin
 
 # [O](https://ukb-dt.github.io/journaling-00/)
 Ah! That clears up a huge ambiguity. If everything is with respect to time and (x) is just indexing *which raindrop / local condition*, then we can treat $y_x$, $y_x'$, and $y_x''$ as **the trajectory, velocity, and acceleration of that raindrop**, in its own little world. Then your stochastic-looking term $y_{\bar{x}}' \pm z\sqrt{y_x''}$ becomes much more intuitive.
