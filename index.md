@@ -1,10 +1,9 @@
-
 <!-- Drop this anywhere in your README.md or page HTML -->
 <script>
   window.MathJax = {
     tex: {
-      inlineMath: [['$', '$'], ['\(', '\)']],
-      displayMath: [['$$','$$'], ['\[','\]']],
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
       processEscapes: true
     },
     options: {
@@ -16,6 +15,7 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
+
 # [O](https://ukb-dt.github.io/journaling-00/)
 Ah! That clears up a huge ambiguity. If everything is with respect to time and (x) is just indexing *which raindrop / local condition*, then we can treat $y_x$, $y_x'$, and $y_x''$ as **the trajectory, velocity, and acceleration of that raindrop**, in its own little world. Then your stochastic-looking term $y_{\bar{x}}' \pm z\sqrt{y_x''}$ becomes much more intuitive.
 
@@ -23,11 +23,10 @@ Here’s the lived mapping:
 
 | Symbol                           | Raindrop POV / Meaning                                                                                            |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| $y_x$                            | Difference / gradient felt by this raindrop (x) at time (t)                                                       |
+| $(y, x)$                         | Difference / gradient felt by a raindrop (x)                                                                      |
+| $y_x + \epsilon$                 | Trajectory of raindrop (x) over time (t) following a pertubation (small energy loss/dissipation that nudges the motion along) |
 | $y_x'$                           | Groove / motion of the raindrop—the rate at which it’s sliding along its trajectory                               |
 | $y_x''$                          | Acceleration / curvature of the groove—the “bendiness” or local sensitivity of its motion                         |
-| $\epsilon$                       | Small energy loss / dissipation that nudges the motion along                                                      |
-| $y_{\bar{x}}'$                   | Average groove over the ensemble of raindrops / typical flow in the local conditions                              |
 | $y_{\bar{x}}' \pm z\sqrt{y_x''}$ | Typical motion plus local jitter—how your raindrop’s flow deviates from the ensemble because of its own curvature |
 
 ---
