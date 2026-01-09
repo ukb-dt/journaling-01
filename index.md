@@ -100,7 +100,7 @@ Which reads as:
 ### **1. Gradient (Language)**
 
 $$
-y(t\|x) + \epsilon
+y(t|x) + \epsilon
 $$
 
 **Story:**  
@@ -114,7 +114,7 @@ You wake up with a feeling. Not an explanation. Just a slope you're already on.
 ### **2. Flow (Science)**
 
 $$
-y'(t\|x) + \epsilon
+y'(t|x) + \epsilon
 $$
 
 **Story:**  
@@ -128,7 +128,7 @@ You're in motion. Momentum carries you. You're not steering hard, but you're not
 ### **3. Power (Art)**
 
 $$
-y''(t\|x)
+y''(t|x)
 $$
 
 **Story:**  
@@ -168,15 +168,15 @@ This is **identity within a population**. You're shaped by your context (ȳ'), b
 ### **5. Work (Meaning)**
 
 $$
-\int y'(t\|x) \, dt + \epsilon \cdot t + C_x
+\int y'(t|x) \, dt + \epsilon \cdot t + C_x
 $$
 
 **Story:**  
-"The basin this raindrop accumulates into is the **integral of all its prior motion**, plus cumulative friction losses, plus an initial condition (C_x) that encodes where it started."
+"The basin this raindrop accumulates into is the **integral of all its prior motion**, plus cumulative friction losses, plus an initial condition $C_x$ that encodes where it started."
 
 **Translation:**
 - Basins are not destinations. They are **time-integrated trajectories**.
-- Even "global" minima are path-dependent: different C_x → different final depth.
+- Even "global" minima are path-dependent: different $C_x$ → different final depth.
 - ε·t = slow energy drain over time (aging, cultural drift, institutional decay)
 
 **Lived:**  
@@ -324,10 +324,10 @@ The mapping of UI/UX to this calculus is immediate and actionable for design.
 ## 4. Proposed Addition: The Decay Constant ($\lambda$)
 
 One comment for the next iteration. In the integral for Work/Meaning:
-$$\int y'(t\|x) \, dt$$
+$$\int y'(t\mid x) \, dt$$
 This assumes perfect memory. Real biological and historical systems have **decay**.
 Consider modifying the "Work" operator to:
-$$\int_{-\infty}^{t} e^{-\lambda(t-\tau)} y'(\tau\|x) \, d\tau$$
+$$\int_{-\infty}^{t} e^{-\lambda(t-\tau)} y'(\tau\mid x) \, d\tau$$
 Where $\lambda$ is the **half-life of memory**.
 * **Dementia/Institutional Rot:** $\lambda$ is too high (basin erodes faster than it fills).
 * **PTSD/Grudges:** $\lambda$ is near zero (the basin never forgets, past pain remains perfectly preserved).
@@ -449,7 +449,7 @@ The kingdom forms as the integral of Kintu's flow (∫ y' dt). Generational deca
 Extending the Work operator with memory decay:
 
 $$
-\text{Basin Depth}(t) = \int_{-\infty}^{t} e^{-\lambda(t-\tau)} y'(\tau\|x) \, d\tau + \epsilon \cdot t + C_x
+\text{Basin Depth}(t) = \int_{-\infty}^{t} e^{-\lambda(t-\tau)} y'(\tau\mid x) \, d\tau + \epsilon \cdot t + C_x
 $$
 
 - **Pre-colonial Buganda:** Low λ. Oral traditions and rigid rituals slow forgetting. The basin deepens over centuries.
