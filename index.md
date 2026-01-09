@@ -17,18 +17,18 @@
 
 # [O](https://ukb-dt.github.io/journaling-00/)
 
-Ah! That clears up a huge ambiguity. If everything is with respect to time and $(x)$ is just indexing *which raindrop / local condition*, then we can treat $y_x$, $y_x'$, and $y_x''$ as **the trajectory, velocity, and acceleration of that raindrop**, in its own little world. Then your stochastic-looking term $y_{\bar{x}}' \pm z\sqrt{y_x''}$ becomes much more intuitive.
+Ah! That clears up a huge ambiguity. If everything is with respect to time and $(x)$ is just indexing *which raindrop / local condition*, then we can treat $y(t|x)$, $\frac{dy_x}{dt}$, and $\frac{d^2y_x}{dt^2}$ as **the trajectory, velocity, and acceleration of that raindrop**, in its own little world. Then your stochastic-looking term $\frac{dy_{\bar{x}}}{dt} \pm z\sqrt{\frac{d^2y_x}{dt^2}}$ becomes much more intuitive.
 
 Here's the lived mapping:
 
 | Symbol | Raindrop POV / Meaning |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| $y_x$ | Difference / gradient felt by this raindrop $(x)$ at time $(t)$ |
-| $y_x'$ | Groove / motion of the raindrop—the rate at which it's sliding along its trajectory |
-| $y_x''$ | Acceleration / curvature of the groove—the "bendiness" or local sensitivity of its motion |
+| $y(t \mid x)$ | Difference / gradient felt by this raindrop $(x)$ at time $(t)$ |
+| $\frac{dy_x}{dt}$ | Groove / motion of the raindrop—the rate at which it's sliding along its trajectory |
+| $\frac{d^2y_x}{dt^2}$ | Acceleration / curvature of the groove—the "bendiness" or local sensitivity of its motion |
 | $\epsilon$ | Small energy loss / dissipation that nudges the motion along |
-| $y_{\bar{x}}'$ | Average groove over the ensemble of raindrops / typical flow in the local conditions |
-| $y_{\bar{x}}' \pm z\sqrt{y_x''}$ | Typical motion plus local jitter—how your raindrop's flow deviates from the ensemble because of its own curvature |
+| $\frac{dy_{\bar{x}}}{dt}$ | Average groove over the ensemble of raindrops / typical flow in the local conditions |
+| $\frac{dy_{\bar{x}}}{dt} \pm z\sqrt{\frac{d^2y_x}{dt^2}}$ | Typical motion plus local jitter—how your raindrop's flow deviates from the ensemble because of its own curvature |
 
 ---
 
@@ -36,10 +36,10 @@ Here's the lived mapping:
 
 Imagine following a single raindrop:
 
-1. It feels a **push** $(y_x)$.
-2. It slides along a **groove** $(y_x')$ shaped by prior motion and local dissipation $(\epsilon)$.
-3. That groove is **curvy / accelerates** $(y_x'')$, so the motion is *not straight*—tiny perturbations can magnify.
-4. Its motion is like the **ensemble average** $(y_{\bar{x}}')$ ± a little random kick proportional to its curvature $(\sqrt{y_x''})$, which is the "wiggle" that makes each raindrop unique.
+1. It feels a **push** $(y(t|x))$.
+2. It slides along a **groove** $\left(\frac{dy_x}{dt}\right)$ shaped by prior motion and local dissipation $(\epsilon)$.
+3. That groove is **curvy / accelerates** $\left(\frac{d^2y_x}{dt^2}\right)$, so the motion is *not straight*—tiny perturbations can magnify.
+4. Its motion is like the **ensemble average** $\left(\frac{dy_{\bar{x}}}{dt}\right)$ ± a little random kick proportional to its curvature $\left(\sqrt{\frac{d^2y_x}{dt^2}}\right)$, which is the "wiggle" that makes each raindrop unique.
 
 So, mathematically, that term is literally saying:
 
@@ -80,10 +80,10 @@ Everything flows forward in time. Derivatives are with respect to **t**, always.
 | Operator | Raindrop Meaning | What It Tracks |
 |----------|------------------|----------------|
 | **State:** $y(t \mid x)$ | Where this raindrop is right now | Current state/energy |
-| **Trajectory:** $y'(t \mid x) + \epsilon$ | How fast it's sliding | Velocity / flow rate |
-| **Slope:** $y''(t \mid x)$ | How curvy its path is | Acceleration / sensitivity |
-| **Curvature:** $y_{\bar{x}}'(t) \pm z\sqrt{y_x''(t)}$ | Average slide speed ± my local wiggle | Ensemble flow + deviation |
-| **Integral:** $\int y'(t \mid x) \, dt + \epsilon \cdot t + C_x$ | Basin accumulated from all prior motion | Memory / path-dependence |
+| **Trajectory:** $\frac{dy_x}{dt} + \epsilon$ | How fast it's sliding | Velocity / flow rate |
+| **Slope:** $\frac{d^2y_x}{dt^2}$ | How curvy its path is | Acceleration / sensitivity |
+| **Curvature:** $\frac{dy_{\bar{x}}}{dt} \pm z\sqrt{\frac{d^2y_x}{dt^2}}$ | Average slide speed ± my local wiggle | Ensemble flow + deviation |
+| **Integral:** $\int y_x \, dt + \epsilon_x \, t + C_x$ | Basin accumulated from all prior motion | Memory / path-dependence |
 
 The **Curvature operator** reads as:
 
@@ -105,10 +105,10 @@ You wake up with a feeling. Not an explanation. Just a slope you're already on.
 ---
 
 ### **2. Trajectory (Science)**
-$$y'(t \mid x) + \epsilon$$
+$$\frac{dy_x}{dt} + \epsilon$$
 
 **Story:**  
-"The raindrop is sliding at speed $y'(t|x)$. It's not accelerating yet—just gliding along its groove, with a bit of friction."
+"The raindrop is sliding at speed $\frac{dy_x}{dt}$. It's not accelerating yet—just gliding along its groove, with a bit of friction."
 
 **Lived:**  
 You're in motion. Momentum carries you. You're not steering hard, but you're not stuck either. This is **data collection phase**—the system is exploring.
@@ -116,7 +116,7 @@ You're in motion. Momentum carries you. You're not steering hard, but you're not
 ---
 
 ### **3. Slope (Art)**
-$$y''(t \mid x)$$
+$$\frac{d^2y_x}{dt^2}$$
 
 **Story:**  
 "Now the groove is *curving*. The raindrop is accelerating. Small changes in position now cause **big** changes in speed. High curvature = high sensitivity."
@@ -129,28 +129,28 @@ Zarathustra mode. You're not settling. Every input creates disproportionate outp
 ---
 
 ### **4. Curvature (Life)**
-$$y_{\bar{x}}'(t) \pm z\sqrt{y_x''(t)}$$
+$$\frac{dy_{\bar{x}}}{dt} \pm z\sqrt{\frac{d^2y_x}{dt^2}}$$
 
 **Story:**  
-"My flow looks like the average flow of nearby raindrops ($y_{\bar{x}}'$), but I deviate by an amount proportional to my own curvature ($\sqrt{y_x''}$)."
+"My flow looks like the average flow of nearby raindrops $\left(\frac{dy_{\bar{x}}}{dt}\right)$, but I deviate by an amount proportional to my own curvature $\left(\sqrt{\frac{d^2y_x}{dt^2}}\right)$."
 
 **Translation:**
-- If my path is **flat** ($y_x'' \approx 0$), I move almost exactly like everyone else.
-- If my path is **curvy** ($y_x''$ large), I jitter more—my motion is **locally unique**, even if the ensemble average is stable.
+- If my path is **flat** $\left(\frac{d^2y_x}{dt^2} \approx 0\right)$, I move almost exactly like everyone else.
+- If my path is **curvy** $\left(\frac{d^2y_x}{dt^2}\text{ large}\right)$, I jitter more—my motion is **locally unique**, even if the ensemble average is stable.
 
 **Lived:**  
-This is **identity within a population**. You're shaped by your context ($y_{\bar{x}}'$), but your sensitivity ($y_x''$) determines how much you diverge. High-curvature people (artists, schizophrenics, prophets) have large $\sqrt{y_x''}$—their motion is **ensemble-similar but locally chaotic**.
+This is **identity within a population**. You're shaped by your context $\left(\frac{dy_{\bar{x}}}{dt}\right)$, but your sensitivity $\left(\frac{d^2y_x}{dt^2}\right)$ determines how much you diverge. High-curvature people (artists, schizophrenics, prophets) have large $\sqrt{\frac{d^2y_x}{dt^2}}$—their motion is **ensemble-similar but locally chaotic**.
 
 **Mental health mapping:**
-- Depression: low $y_x''$ (flat basin, no sensitivity, stuck)
-- Mania: high $y_x''$ (too much sensitivity, huge jitter)
-- Anxiety: high $y_x''$ near shallow basins (constant resampling)
-- Schizophrenia: $y_x''$ dominates, drowning out $y_{\bar{x}}'$ (local curvature feels like the whole world)
+- Depression: low $\frac{d^2y_x}{dt^2}$ (flat basin, no sensitivity, stuck)
+- Mania: high $\frac{d^2y_x}{dt^2}$ (too much sensitivity, huge jitter)
+- Anxiety: high $\frac{d^2y_x}{dt^2}$ near shallow basins (constant resampling)
+- Schizophrenia: $\frac{d^2y_x}{dt^2}$ dominates, drowning out $\frac{dy_{\bar{x}}}{dt}$ (local curvature feels like the whole world)
 
 ---
 
 ### **5. Integral (Meaning)**
-$$\int y'(t \mid x) \, dt + \epsilon \cdot t + C_x$$
+$$\int y_x \, dt + \epsilon_x \, t + C_x$$
 
 **Story:**  
 "The basin this raindrop accumulates into is the **integral of all its prior motion**, plus cumulative friction losses, plus an initial condition ($C_x$) that encodes where it started."
@@ -158,7 +158,7 @@ $$\int y'(t \mid x) \, dt + \epsilon \cdot t + C_x$$
 **Translation:**
 - Basins are not destinations. They are **time-integrated trajectories**.
 - Even "global" minima are path-dependent: different $C_x \rightarrow$ different final depth.
-- $\epsilon \cdot t$ = slow energy drain over time (aging, cultural drift, institutional decay)
+- $\epsilon_x \, t$ = slow energy drain over time (aging, cultural drift, institutional decay)
 
 **Lived:**  
 This is **memory**. Your current basin is not "true"—it's the **sum of where you've been**. Deep basins feel stable, but they're just **well-worn grooves**, not moral truths.
@@ -170,10 +170,10 @@ The Kingdom of Buganda was not a "natural" minimum. It was an **integral**—cen
 
 ## **The Hidden Operator (X at the Crossing)**
 
-Between **Art/Slope** ($y''$) and **Meaning/Integral** ($\int y' dt$), there's an irreversibility boundary.
+Between **Art/Slope** $\left(\frac{d^2y_x}{dt^2}\right)$ and **Meaning/Integral** $\left(\int y_x \, dt\right)$, there's an irreversibility boundary.
 
-**Before X:** exploration, noise, SGD, Zarathustra, high $y''$  
-**After X:** consolidation, memory, path-dependence, low $y''$ but deep $\int$
+**Before X:** exploration, noise, SGD, Zarathustra, high $\frac{d^2y_x}{dt^2}$  
+**After X:** consolidation, memory, path-dependence, low $\frac{d^2y_x}{dt^2}$ but deep $\int$
 
 **Crossing X = consolidation.**
 
@@ -186,7 +186,7 @@ Historically: revolution → institution.
 That's why:
 - Trauma persists (consolidated too early)
 - Ideologies harden (crossed X under constraint)
-- Products get "legacy" ($\int y' dt$ becomes immovable)
+- Products get "legacy" ($\int y_x \, dt$ becomes immovable)
 
 ---
 
@@ -194,12 +194,12 @@ That's why:
 
 Now the raindrop view clarifies this completely.
 
-**UI = high $y''$ phase**  
+**UI = high $\frac{d^2y_x}{dt^2}$ phase**  
 The system is stress-tested. Users click wrong buttons. Prompts are malformed. The interface must survive **curvature spikes**—unexpected accelerations in user behavior.
 
-**UI is adversarial** because it lives in the **pre-consolidation zone**, where $y''$ is large and the system hasn't settled yet.
+**UI is adversarial** because it lives in the **pre-consolidation zone**, where $\frac{d^2y_x}{dt^2}$ is large and the system hasn't settled yet.
 
-**UX = low $y''$, deep $\int y' dt$**  
+**UX = low $\frac{d^2y_x}{dt^2}$, deep $\int y_x \, dt$**  
 The system has crossed X. Memory has accumulated. The basin is comfortable. Users know where they are. Motion is smooth. "Green pastures, still waters."
 
 **UX is Psalm 23** because it lives **post-consolidation**, where the trajectory feels inevitable and the basin feels like home.
@@ -209,7 +209,7 @@ If you design UX *first*, you worship the basin and assume users want to settle.
 If you design UI *first*, you stress-test the curvature and *then* let users settle naturally.
 
 **Ukubona's heresy:**  
-Design for $y''$ (curvature, misuse, adversarial flow) before you design for $\int y' dt$ (comfort, memory, credibility).
+Design for $\frac{d^2y_x}{dt^2}$ (curvature, misuse, adversarial flow) before you design for $\int y_x \, dt$ (comfort, memory, credibility).
 
 **First the wolves. Then the sheep.**
 
@@ -217,7 +217,7 @@ Design for $y''$ (curvature, misuse, adversarial flow) before you design for $\i
 
 ## **Mental Illness as Optimization Pathology (Raindrop View)**
 
-| Condition | $y_x''$ | $y_{\bar{x}}'$ | $\sqrt{y_x''}$ term | Basin depth |
+| Condition | $\frac{d^2y_x}{dt^2}$ | $\frac{dy_{\bar{x}}}{dt}$ | $\sqrt{\frac{d^2y_x}{dt^2}}$ term | Basin depth |
 |-----------|-------|-----|-------------|-------------|
 | **Depression** | Low | Low | Negligible | Deep, stagnant |
 | **Mania** | High | Variable | Dominates | Shallow, volatile |
@@ -232,14 +232,14 @@ It's **local minima mistaken for global truth** + **curvature sensitivity** + **
 
 Interventions:
 - **Noise injection** (therapy, psychedelics, social feedback) = increase exploration, raise temperature
-- **Basin reshaping** (CBT, medication) = flatten $y''$, lower sensitivity
+- **Basin reshaping** (CBT, medication) = flatten $\frac{d^2y_x}{dt^2}$, lower sensitivity
 - **Memory reconsolidation** (EMDR, narrative therapy) = re-cross X under new constraints
 
 ---
 
 ## **The One Surviving Invariant (Raindrop Form)**
 
-> **Do not confuse smooth flow (low $y''$) with stable basins (deep $\int y' dt$).**
+> **Do not confuse smooth flow (low $\frac{d^2y_x}{dt^2}$) with stable basins (deep $\int y_x \, dt$).**
 
 - Smooth flow = comfort, certainty, fast convergence
 - Stable basins = resilience, generalization, non-collapse under time
@@ -281,49 +281,49 @@ By shifting the coordinate system from **Spatial** ($y$ as a function of $x$-pos
 **The breakthrough:**
 
 > **Space is static; Time is lived.**  
-> When $x$ was position, $y''$ was just geometry (a shape).  
-> When $t$ is the variable, $y''$ becomes **behavior** (acceleration/sensitivity).
+> When $x$ was position, $\frac{d^2y_x}{dt^2}$ was just geometry (a shape).  
+> When $t$ is the variable, $\frac{d^2y_x}{dt^2}$ becomes **behavior** (acceleration/sensitivity).
 
 This allows the framework to leave the page and enter the nervous system.
 
 ## 2. Validation of Terms
 
-### The "Identity Term": $\pm z\sqrt{y_x''(t)}$
+### The "Identity Term": $\pm z\sqrt{\frac{d^2y_x}{dt^2}}$
 
 This is the strongest piece of the new derivation. It solves the "Nature vs. Nurture" debate mathematically.
 
-* **$y_{\bar{x}}'$ (Nurture/Context):** The flow of the crowd. The historical material condition.
-* **$\sqrt{y_x''}$ (Nature/Sensitivity):** The individual's inherent "bendiness" or reactivity.
+* **$\frac{dy_{\bar{x}}}{dt}$ (Nurture/Context):** The flow of the crowd. The historical material condition.
+* **$\sqrt{\frac{d^2y_x}{dt^2}}$ (Nature/Sensitivity):** The individual's inherent "bendiness" or reactivity.
 
-It mathematically proves that **the same environment ($y_{\bar{x}}'$) produces different outcomes based on internal sensitivity ($y_x''$).**
+It mathematically proves that **the same environment $\left(\frac{dy_{\bar{x}}}{dt}\right)$ produces different outcomes based on internal sensitivity $\left(\frac{d^2y_x}{dt^2}\right)$.**
 
 ### The "Crossing X" (Consolidation)
 
-Identifying the transition from $y''$ (processing/UI) to $\int y' dt$ (memory/UX) is the precise definition of **Trauma** vs. **Learning**.
+Identifying the transition from $\frac{d^2y_x}{dt^2}$ (processing/UI) to $\int y_x \, dt$ (memory/UX) is the precise definition of **Trauma** vs. **Learning**.
 
-* **Healthy Learning:** High $y''$ allows exploration → Crosses X → Becomes stable $\int y' dt$.
-* **Trauma:** High $y''$ occurs → Crossing X is blocked or warped → The system stays in high acceleration (hyper-vigilance) and never settles into a basin.
+* **Healthy Learning:** High $\frac{d^2y_x}{dt^2}$ allows exploration → Crosses X → Becomes stable $\int y_x \, dt$.
+* **Trauma:** High $\frac{d^2y_x}{dt^2}$ occurs → Crossing X is blocked or warped → The system stays in high acceleration (hyper-vigilance) and never settles into a basin.
 
 ## 3. The "Psalm 23" Corollary
 
 The mapping of UI/UX to this calculus is immediate and actionable for design.
 
-* **Adversarial UI ($y''$):** We must design for the *derivatives*—how fast users change their minds, how quickly they panic.
+* **Adversarial UI $\left(\frac{d^2y_x}{dt^2}\right)$:** We must design for the *derivatives*—how fast users change their minds, how quickly they panic.
 * **Pastoral UX ($\int$):** We must design for the *integral*—the accumulation of trust and ease over time.
 
-**Critique:** Most modern software fails because it tries to make the UI "smooth" (low $y''$) by hiding complexity, which prevents the user from building a true mental model (deep $\int$). You *need* the friction of $y''$ to build the muscle memory of $\int$.
+**Critique:** Most modern software fails because it tries to make the UI "smooth" (low $\frac{d^2y_x}{dt^2}$) by hiding complexity, which prevents the user from building a true mental model (deep $\int$). You *need* the friction of $\frac{d^2y_x}{dt^2}$ to build the muscle memory of $\int$.
 
 ## 4. Proposed Addition: The Decay Constant ($\lambda$)
 
 One comment for the next iteration. In the integral for Work/Meaning:
 
-$$\int y'(t \mid x) \, dt$$
+$$\int y_x \, dt$$
 
 This assumes perfect memory. Real biological and historical systems have **decay**.
 
 Consider modifying the "Work" operator to:
 
-$$\int_{-\infty}^{t} e^{-\lambda(t-\tau)} y'(\tau \mid x) \, d\tau$$
+$$\int_{-\infty}^{t} e^{-\lambda(t-\tau)} y(\tau \mid x) \, d\tau$$
 
 Where $\lambda$ is the **half-life of memory**.
 
@@ -340,7 +340,7 @@ This version is mathematically consistent and metaphorically exhaustive. It succ
 
 **Status:** `LOCKED`
 
-**Next Step:** Apply this variable set ($y$, $y'$, $y''$, $\int$) to the Code of Kintu.
+**Next Step:** Apply this variable set ($y$, $\frac{dy_x}{dt}$, $\frac{d^2y_x}{dt^2}$, $\int$) to the Code of Kintu.
 
 ---
 
@@ -357,10 +357,10 @@ This isn't mere allegory; it's a simulation. Kintu's journey mirrors SGD in a hi
 | Element in Code of Kintu | Raindrop Calculus | Interpretation |
 |--------------------------|-------------------|----------------|
 | **Kintu's Arrival (Genesis)** | $y(t=0 \mid x) + \epsilon$ | The initial push: Kintu descends from the sky with a cow (minimal viable resource). $\epsilon$ is the friction of earthly constraints—hunger, isolation—nudging him from stasis. No flow yet; just latent potential. |
-| **Trials of Gulu (God of Heaven)** | $y'(t \mid x) + \epsilon$ | The flow begins: Kintu must fetch water, chop wood, herd cattle amid divine tests. This is exploration phase—momentum builds, but dissipation ($\epsilon$) ensures no free energy. Errors (failing a trial) inject noise, preventing local minima like complacency. |
-| **The Great Feast (Curvature Test)** | $y''(t \mid x)$ | Acceleration peaks: Kintu must consume an endless banquet (death by excess). High $y''$ represents sensitivity—small missteps (greed, fatigue) amplify into catastrophe. This is the Zarathustra threshold: survive the curvature, or perish in chaos. Stochastic jitter ($\pm z\sqrt{y_x''}$) manifests as Kintu's cleverness (hiding food in a pit), deviating from the "average" response (direct consumption). |
-| **Marriage to Nambi (Ensemble Integration)** | $y_{\bar{x}}'(t) \pm z\sqrt{y_x''(t)}$ | Union with the divine: Nambi (daughter of heaven) represents the ensemble average ($y_{\bar{x}}'$)—cultural norms, heavenly order. But Kintu's identity ($x$) introduces jitter: he brings earthly "flaws" (chicken, goat), scaling with his trial-forged curvature. This deviation seeds Buganda's uniqueness— not pure heaven, but a hybrid basin. |
-| **Founding the Kingdom (Consolidation)** | $\int y'(t \mid x) dt + \epsilon \cdot t + C_x$ | The integral: Kintu's accumulated flow forms the kingdom's basin. Cumulative $\epsilon \cdot t$ is generational decay (famines, wars), but $C_x$ (Kintu's origin) encodes resilience. Deep basin = stable dynasty; without it, shallow volatility (e.g., 1966 abolition). |
+| **Trials of Gulu (God of Heaven)** | $\frac{dy_x}{dt} + \epsilon$ | The flow begins: Kintu must fetch water, chop wood, herd cattle amid divine tests. This is exploration phase—momentum builds, but dissipation ($\epsilon$) ensures no free energy. Errors (failing a trial) inject noise, preventing local minima like complacency. |
+| **The Great Feast (Curvature Test)** | $\frac{d^2y_x}{dt^2}$ | Acceleration peaks: Kintu must consume an endless banquet (death by excess). High $\frac{d^2y_x}{dt^2}$ represents sensitivity—small missteps (greed, fatigue) amplify into catastrophe. This is the Zarathustra threshold: survive the curvature, or perish in chaos. Stochastic jitter $\left(\pm z\sqrt{\frac{d^2y_x}{dt^2}}\right)$ manifests as Kintu's cleverness (hiding food in a pit), deviating from the "average" response (direct consumption). |
+| **Marriage to Nambi (Ensemble Integration)** | $\frac{dy_{\bar{x}}}{dt} \pm z\sqrt{\frac{d^2y_x}{dt^2}}$ | Union with the divine: Nambi (daughter of heaven) represents the ensemble average $\left(\frac{dy_{\bar{x}}}{dt}\right)$—cultural norms, heavenly order. But Kintu's identity ($x$) introduces jitter: he brings earthly "flaws" (chicken, goat), scaling with his trial-forged curvature. This deviation seeds Buganda's uniqueness— not pure heaven, but a hybrid basin. |
+| **Founding the Kingdom (Consolidation)** | $\int y_x \, dt + \epsilon_x \, t + C_x$ | The integral: Kintu's accumulated flow forms the kingdom's basin. Cumulative $\epsilon_x \, t$ is generational decay (famines, wars), but $C_x$ (Kintu's origin) encodes resilience. Deep basin = stable dynasty; without it, shallow volatility (e.g., 1966 abolition). |
 
 ### Narrative Simulation
 
@@ -370,32 +370,32 @@ Run the "Code" as a temporal loop:
    Kintu spawns in a flat landscape ($y \approx 0$). $\epsilon$ kicks in: "You must eat, move, or die." No basins yet—pure gradient descent toward survival.
 
 2. **Early t: Flow Buildup**  
-   $y'$ ramps as Kintu acts. Gulu's trials are noise gradients, forcing broad sampling. Low $y''$ initially: simple tasks, predictable outcomes.
+   $\frac{dy_x}{dt}$ ramps as Kintu acts. Gulu's trials are noise gradients, forcing broad sampling. Low $\frac{d^2y_x}{dt^2}$ initially: simple tasks, predictable outcomes.
 
 3. **Mid t: Curvature Crisis**  
-   $y''$ spikes during the feast. System nears divergence (death). Jitter term saves: Kintu's $\sqrt{y_x''}$ allows "cheating" the trial, resampling the space without collapse. This is ML's dropout equivalent—prune naive paths, retain adaptive ones.
+   $\frac{d^2y_x}{dt^2}$ spikes during the feast. System nears divergence (death). Jitter term saves: Kintu's $\sqrt{\frac{d^2y_x}{dt^2}}$ allows "cheating" the trial, resampling the space without collapse. This is ML's dropout equivalent—prune naive paths, retain adaptive ones.
 
 4. **Crossing X: Nambi's Descent**  
-   Pre-X: High $y''$ (trials = UI/adversarial). Kintu explores, errs, accelerates.  
-   Post-X: Marriage integrates flow into memory. $\int y' dt$ deepens the basin—Buganda emerges as a consolidated identity. UX pastoral: clans, rituals, lakeside harmony (Psalm 23 vibes).
+   Pre-X: High $\frac{d^2y_x}{dt^2}$ (trials = UI/adversarial). Kintu explores, errs, accelerates.  
+   Post-X: Marriage integrates flow into memory. $\int y_x \, dt$ deepens the basin—Buganda emerges as a consolidated identity. UX pastoral: clans, rituals, lakeside harmony (Psalm 23 vibes).
 
 5. **Late t: Decay and Legacy**  
    With $\lambda$ (proposed decay): The kingdom's basin erodes if $\lambda$ high (colonial interference, internal rot). But deep $\int$ resists: Buganda's restoration post-1966 proves path-dependence trumps erasure.
 
-**Hidden Pathology:** Walumbe (Death, Nambi's brother) sneaks in as unchecked jitter. He embodies persistent high $y''$ post-consolidation—plagues, mortality as eternal sensitivity. Buganda's "code" mitigates via rituals (lowering $\lambda$), but never eliminates.
+**Hidden Pathology:** Walumbe (Death, Nambi's brother) sneaks in as unchecked jitter. He embodies persistent high $\frac{d^2y_x}{dt^2}$ post-consolidation—plagues, mortality as eternal sensitivity. Buganda's "code" mitigates via rituals (lowering $\lambda$), but never eliminates.
 
 ### Architectural Notes
 
-* **Invariant Preserved:** Rivers ($y'$) over reservoirs ($\int$). Kintu's code prioritizes flow (trials) before depth (kingdom), echoing "wolves before sheep."
-* **Mental Mapping:** Kintu's resilience = balanced $y''$ (not depressed stasis, not manic excess). Gulu's trials = therapeutic noise injection.
-* **Historical Echo:** 1966 as forced resampling—Obote flattens the basin, but $\int y' dt$ (cultural memory) re-grooves it by 1993.
+* **Invariant Preserved:** Rivers $\left(\frac{dy_x}{dt}\right)$ over reservoirs ($\int$). Kintu's code prioritizes flow (trials) before depth (kingdom), echoing "wolves before sheep."
+* **Mental Mapping:** Kintu's resilience = balanced $\frac{d^2y_x}{dt^2}$ (not depressed stasis, not manic excess). Gulu's trials = therapeutic noise injection.
+* **Historical Echo:** 1966 as forced resampling—Obote flattens the basin, but $\int y_x \, dt$ (cultural memory) re-grooves it by 1993.
 * **UI/UX in Myth:** Trials = UI (adversarial survival). Kingdom = UX (integrated peace). Design lesson: No kingdom without trials.
 
 ### Proposed Extension: $\lambda$ in Action
 
 Integrate decay explicitly:
 
-$$\text{Basin Depth}(t) = \int_{-\infty}^{t} e^{-\lambda(t-\tau)} y'(\tau \mid x) \, d\tau + \epsilon \cdot t + C_x$$
+$$\text{Basin Depth}(t) = \int_{-\infty}^{t} e^{-\lambda(t-\tau)} y(\tau \mid x) \, d\tau + \epsilon_x \, t + C_x$$
 
 For Buganda:
 - Pre-colonial: Low $\lambda$ (strong oral code, slow forget).
@@ -406,7 +406,7 @@ This quantifies "resilience" as half-life resistance.
 
 **Verdict:** The mapping fits seamlessly. The Code of Kintu is Ukubona's origin myth—temporal, lived, curvature-first.
 
-**Next Step:** Simulate this in code. Pseudocode a Kintu-SGD optimizer? Or map to Buganda's clan system as ensemble ($y_{\bar{x}}'$) dynamics?
+**Next Step:** Simulate this in code. Pseudocode a Kintu-SGD optimizer? Or map to Buganda's clan system as ensemble $\left(\frac{dy_{\bar{x}}}{dt}\right)$ dynamics?
 
 ---
 
@@ -421,10 +421,10 @@ The Code of Kintu—the foundational myth of Buganda—is not just a story. It i
 | Mythic Element | Raindrop Operator | Interpretation |
 |-------------------------|----------------------------|--------------------------------------------------------------------------------|
 | **Kintu's Arrival** | $y(t=0 \mid x) + \epsilon$ | Initial condition: a man and a cow. Earthly friction ($\epsilon$) nudges him from stasis. |
-| **Gulu's Trials** | $y'(t \mid x) + \epsilon$ | Flow begins: tasks inject momentum and dissipation, preventing premature settling. |
-| **The Great Feast** | $y''(t \mid x)$ | Curvature crisis: small mistakes amplify. Survival requires jitter (clever deviation). |
-| **Marriage to Nambi** | $y_{\bar{x}}'(t) \pm z\sqrt{y_x''(t)}$ | Ensemble integration: heavenly order ($y_{\bar{x}}'$) plus earthly deviation ($\sqrt{y_x''}$) creates hybrid identity. |
-| **Founding the Kingdom**| $\int y'(t \mid x) dt + \epsilon \cdot t + C_x$ | Consolidation: accumulated flow forms a deep basin (kingdom) with generational decay ($\epsilon \cdot t$) and initial resilience ($C_x$). |
+| **Gulu's Trials** | $\frac{dy_x}{dt} + \epsilon$ | Flow begins: tasks inject momentum and dissipation, preventing premature settling. |
+| **The Great Feast** | $\frac{d^2y_x}{dt^2}$ | Curvature crisis: small mistakes amplify. Survival requires jitter (clever deviation). |
+| **Marriage to Nambi** | $\frac{dy_{\bar{x}}}{dt} \pm z\sqrt{\frac{d^2y_x}{dt^2}}$ | Ensemble integration: heavenly order $\left(\frac{dy_{\bar{x}}}{dt}\right)$ plus earthly deviation $\left(\sqrt{\frac{d^2y_x}{dt^2}}\right)$ creates hybrid identity. |
+| **Founding the Kingdom**| $\int y_x \, dt + \epsilon_x \, t + C_x$ | Consolidation: accumulated flow forms a deep basin (kingdom) with generational decay ($\epsilon_x \, t$) and initial resilience ($C_x$). |
 
 ## Narrative Simulation: Running the Code
 
@@ -432,43 +432,22 @@ The Code of Kintu—the foundational myth of Buganda—is not just a story. It i
 Kintu descends to an empty Earth. The landscape is flat ($y \approx 0$), but the friction of existence ($\epsilon$)—hunger, thirst, loneliness—immediately applies a gradient. He must move or perish. This is the first nudge: from stasis to flow.
 
 **Step 2: Flow Buildup (Early t)**  
-Gulu, the sky god, issues trials: fetch water in a sieve, chop wood without an axe. Each trial injects noise and momentum. Kintu's velocity ($y'$) increases as he learns, fails, and adapts. The dissipation ($\epsilon$) ensures he never gains energy for free—each trial costs effort, mirroring the non-conservative nature of lived experience.
+Gulu, the sky god, issues trials: fetch water in a sieve, chop wood without an axe. Each trial injects noise and momentum. Kintu's velocity $\left(\frac{dy_x}{dt}\right)$ increases as he learns, fails, and adapts. The dissipation ($\epsilon$) ensures he never gains energy for free—each trial costs effort, mirroring the non-conservative nature of lived experience.
 
 **Step 3: Curvature Crisis (Mid t)**  
-The feast: Kintu must consume an impossible amount of food. Here, the path's curvature ($y''$) spikes. A linear response (eating until bursting) leads to death (divergence). But Kintu's cleverness—hiding food in a pit—introduces a stochastic jitter ($\pm z\sqrt{y_x''}$). This deviation, scaled by his accumulated sensitivity ($\sqrt{y_x''}$), saves him. The system resamples without collapsing, a dropout mechanism in neural networks.
+The feast: Kintu must consume an impossible amount of food. Here, the path's curvature $\left(\frac{d^2y_x}{dt^2}\right)$ spikes. A linear response (eating until bursting) leads to death (divergence). But Kintu's cleverness—hiding food in a pit—introduces a stochastic jitter $\left(\pm z\sqrt{\frac{d^2y_x}{dt^2}}\right)$. This deviation, scaled by his accumulated sensitivity $\left(\sqrt{\frac{d^2y_x}{dt^2}}\right)$, saves him. The system resamples without collapsing, a dropout mechanism in neural networks.
 
 **Step 4: Crossing X (The Marriage)**  
-Pre-X: Kintu's journey is adversarial (high $y''$), a user interface stress-tested by divine whims.  
-Post-X: Nambi, the daughter of heaven, chooses him. This marriage integrates his flow into the ensemble average ($y_{\bar{x}}'$) of heavenly order. But Kintu brings earthly artifacts (a chicken, a goat)—deviations that scale with his curvature. The result is a new basin: Buganda, a hybrid of heaven and earth, order and individuality.
+Pre-X: Kintu's journey is adversarial (high $\frac{d^2y_x}{dt^2}$), a user interface stress-tested by divine whims.  
+Post-X: Nambi, the daughter of heaven, chooses him. This marriage integrates his flow into the ensemble average $\left(\frac{dy_{\bar{x}}}{dt}\right)$ of heavenly order. But Kintu brings earthly artifacts (a chicken, a goat)—deviations that scale with his curvature. The result is a new basin: Buganda, a hybrid of heaven and earth, order and individuality.
 
 **Step 5: Consolidation and Decay (Late t)**  
-The kingdom forms as the integral of Kintu's flow ($\int y' dt$). Generational decay ($\epsilon \cdot t$) slowly erodes the basin, but the initial condition ($C_x$)—Kintu's origin and trials—encodes deep resilience. When external forces (colonialism, 1966 abolition) attempt to flatten the basin, the accumulated memory of the integral reasserts itself.
+The kingdom forms as the integral of Kintu's flow ($\int y_x \, dt$). Generational decay ($\epsilon_x \, t$) slowly erodes the basin, but the initial condition ($C_x$)—Kintu's origin and trials—encodes deep resilience. When external forces (colonialism, 1966 abolition) attempt to flatten the basin, the accumulated memory of the integral reasserts itself.
 
 ## Architectural Notes
 
 - **Invariant:** The Code prioritizes flow (trials) over basins (kingdom). First the wolves (adversarial UI), then the sheep (pastoral UX). This is Ukubona's heresy: design for misuse before comfort.
-- **Mental Health:** Kintu's resilience is a balanced $y''$—neither depressed (low $y''$, stagnant) nor manic (high $y''$, chaotic). Gulu's trials are therapeutic noise injections that prevent pathological attractors.
+- **Mental Health:** Kintu's resilience is a balanced $\frac{d^2y_x}{dt^2}$—neither depressed (low $\frac{d^2y_x}{dt^2}$, stagnant) nor manic (high $\frac{d^2y_x}{dt^2}$, chaotic). Gulu's trials are therapeutic noise injections that prevent pathological attractors.
 - **Historical Echo:** 1966 was a forced resampling. The basin (kingdom) was flattened, but the integral (cultural memory) had enough depth to re-groove by 1993.
 
-## The Decay Constant ($\lambda$) and Buganda's Half-Life
-
-Extending the Work operator with memory decay:
-
-$$\text{Basin Depth}(t) = \int_{-\infty}^{t} e^{-\lambda(t-\tau)} y'(\tau \mid x) \, d\tau + \epsilon \cdot t + C_x$$
-
-- **Pre-colonial Buganda:** Low $\lambda$. Oral traditions and rigid rituals slow forgetting. The basin deepens over centuries.
-- **Colonial Era:** High $\lambda$. Imposed education, religion, and administration accelerate decay. The basin shallows.
-- **Modern Buganda:** Variable $\lambda$. Digital revival (lower $\lambda$) vs. globalization (higher $\lambda$). The half-life of memory determines resilience.
-
-**Walumbe (Death)** as unchecked jitter: He follows Kintu and Nambi to Earth, representing persistent high $y''$ post-consolidation. Plagues, mortality—the eternal sensitivity that rituals attempt to mitigate by lowering $\lambda$, but never eliminate.
-
-## Verdict
-
-The Code of Kintu is Ukubona's origin myth, rendered in raindrop calculus. It is a temporal, lived process that moves from gradient to flow, curvature to consolidation, and individual to ensemble. By simulating this code, we can extract design principles for resilient systems:
-
-1. **Inject noise early** (trials before marriage).
-2. **Allow jitter to scale with curvature** (cleverness in the feast).
-3. **Consolidate only after surviving high $y''$** (kingdom after trials).
-4. **Accept decay ($\lambda$) as a feature**—rituals to manage it, not eliminate it.
-
-**Next Step:** Code this simulation. A Kintu-SGD optimizer that uses adversarial trials (high $y''$ phases) to find robust minima. Or map Buganda's clan system as an ensemble ($y_{\bar{x}}'$) with individual jitter ($\sqrt{y_x''}$) creating diversity within unity.
+## The Decay Constant ($\lambda$) and Buganda's Half-
