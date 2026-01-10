@@ -17,7 +17,7 @@
 
 - State
 - Trajectory
-- Velocity
+- [Velocity](https://ukb-dt.github.io/journaling-03/)
 - [Acceleration](https://ukb-dt.github.io/journaling-02/)
 - [Basin](https://ukb-dt.github.io/journaling-01/)
 
