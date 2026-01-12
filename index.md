@@ -15,7 +15,7 @@
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
 
-- State
+- [State](https://en.wikipedia.org/wiki/Large_language_model)
 - [Trajectory](https://ukb-dt.github.io/coen-00/)
 - [Velocity](https://ukb-dt.github.io/journaling-03/)
 - [Acceleration](https://ukb-dt.github.io/journaling-02/)
