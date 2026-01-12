@@ -19,9 +19,9 @@
 - [Trajectory](https://ukb-dt.github.io/coen-00/)
 - [Velocity](https://ukb-dt.github.io/journaling-03/)
 - [Acceleration](https://ukb-dt.github.io/journaling-02/)
-- [Basin](https://ukb-dt.github.io/journaling-01/)
+- [Basin](https://ukb-dt.github.io/journaling-00/)
 
-# [O](https://ukb-dt.github.io/journaling-00/)
+# [O](https://ukb-dt.github.io/journaling-04/)
 Ah! That clears up a huge ambiguity. If everything is with respect to time and (x) is just indexing *which raindrop / local condition*, then we can treat $y_x$, $y_x'$, and $y_x''$ as **the trajectory, velocity, and acceleration of that raindrop**, in its own little world. Then your stochastic-looking term $y_{\bar{x}}' \pm z\sqrt{y_x''}$ becomes much more intuitive.
 
 Here’s the lived mapping:
@@ -59,7 +59,7 @@ If you want, we can **draw the whole chain**:
 
 Do you want me to do that next?
 
-# A
+# [A](https://ukb-dt.github.io/journaling-05/)
 Yes — let me lock this down with full raindrop clarity, now that we've fixed the coordinate system.
 
 ---
@@ -291,7 +291,7 @@ And it all flows from one coordinate choice:
 **t = time**  
 **Everything else is just derivatives and integrals of y(t\|x).**
 
-# G
+# [G](https://ukb-dt.github.io/journaling-06/)
 # Architectural Review: The Temporal Shift (Raindrop v2.0)
 
 ## 1. The Critical Pivot
